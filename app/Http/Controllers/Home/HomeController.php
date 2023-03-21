@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Home;
 use App\Exceptions\RuleValidationException;
 use App\Http\Controllers\BaseController;
 use App\Models\Pay;
-use Germey\Geetest\Geetest;
 use Illuminate\Database\DatabaseServiceProvider;
 use Illuminate\Database\QueryException;
 use Illuminate\Encryption\Encrypter;
@@ -81,28 +80,6 @@ class HomeController extends BaseController
             return $this->err($ruleValidationException->getMessage());
         }
 
-    }
-
-    /**
-     * 极验行为验证
-     *
-     * @param Request $request
-     *
-     * @author    assimon<ashang@utf8.hk>
-     * @copyright assimon<ashang@utf8.hk>
-     * @link      http://utf8.hk/
-     */
-    public function geetest(Request $request)
-    {
-        $data = [
-            'user_id' => @Auth::user()?@Auth::user()->id:'UnLoginUser',
-            'client_type' => 'web',
-            'ip_address' => \Illuminate\Support\Facades\Request::ip()
-        ];
-        $status = Geetest::preProcess($data);
-        session()->put('gtserver', $status);
-        session()->put('user_id', $data['user_id']);
-        return Geetest::getResponseStr();
     }
 
     /**

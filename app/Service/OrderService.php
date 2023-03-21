@@ -77,17 +77,6 @@ class OrderService
         if ($validator->fails()) {
             throw new RuleValidationException($validator->errors()->first());
         }
-        // 极验验证
-        if (
-            dujiaoka_config_get('is_open_geetest') == BaseModel::STATUS_OPEN
-            &&
-            !Validator::make($request->all(),
-                ['geetest_challenge' => 'geetest',],
-                [ 'geetest' => __('dujiaoka.prompt.geetest_validate_fail')])
-
-        ) {
-            throw new RuleValidationException(__('dujiaoka.prompt.geetest_validate_fail'));
-        }
     }
 
     /**
@@ -116,7 +105,7 @@ class OrderService
         }
         return $goods;
     }
-	
+
     /**
      * 判断是否有循环卡密
      *
@@ -135,9 +124,9 @@ class OrderService
             ->where('is_loop', true)
             ->count();
         if($carmis > 0 && $request->input('by_amount') > 1){
-			throw new RuleValidationException(__('dujiaoka.prompt.loop_carmis_limit'));
-		}
-		return $carmis;
+            throw new RuleValidationException(__('dujiaoka.prompt.loop_carmis_limit'));
+        }
+        return $carmis;
     }
 
     /**
