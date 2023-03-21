@@ -7,7 +7,7 @@
  * @link      http://utf8.hk/
  */
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Home\HomeController;
 
 Route::group(['middleware' => ['dujiaoka.boot'],'namespace' => 'Home'], function () {
     // 首页
