@@ -37,22 +37,22 @@ class OrderController extends AdminController
                     OrderModel::MANUAL_PROCESSING => Admin::color()->info(),
                 ]);
             $grid->column('email')->copyable();
-            $grid->column('goods.gd_name', admin_trans('order.fields.goods_id'));
-            $grid->column('goods_price');
-            $grid->column('buy_amount');
-            $grid->column('total_price');
-            $grid->column('coupon.coupon', admin_trans('order.fields.coupon_id'));
-            $grid->column('coupon_discount_price');
-            $grid->column('wholesale_discount_price');
+            // $grid->column('goods.gd_name', admin_trans('order.fields.goods_id'));
+            // $grid->column('goods_price');
+            // $grid->column('buy_amount');
+            // $grid->column('total_price');
+            // $grid->column('coupon.coupon', admin_trans('order.fields.coupon_id'));
+            // $grid->column('coupon_discount_price');
+            // $grid->column('wholesale_discount_price');
             $grid->column('actual_price');
-            $grid->column('pay.pay_name', admin_trans('order.fields.pay_id'));
-            $grid->column('buy_ip');
-            $grid->column('search_pwd')->copyable();
-            $grid->column('trade_no')->copyable();
+            // $grid->column('pay.pay_name', admin_trans('order.fields.pay_id'));
+            // $grid->column('buy_ip');
+            // $grid->column('search_pwd')->copyable();
+            // $grid->column('trade_no')->copyable();
             $grid->column('status')
                 ->select(OrderModel::getStatusMap());
             $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
+            // $grid->column('updated_at')->sortable();
             $grid->disableCreateButton();
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('order_sn');

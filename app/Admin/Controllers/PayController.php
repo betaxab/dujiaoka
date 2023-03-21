@@ -27,11 +27,11 @@ class PayController extends AdminController
             $grid->column('pay_name');
             $grid->column('pay_check');
             $grid->column('pay_method')->select(PayModel::getMethodMap());
-            $grid->column('merchant_id')->limit(20);
-            $grid->column('merchant_key')->limit(20);
-            $grid->column('merchant_pem')->limit(20);
+            // $grid->column('merchant_id')->limit(20);
+            // $grid->column('merchant_key')->limit(20);
+            // $grid->column('merchant_pem')->limit(20);
             $grid->column('pay_client')->select(PayModel::getClientMap());
-            $grid->column('pay_handleroute');
+            // $grid->column('pay_handleroute');
             $grid->column('is_open')->switch();
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();

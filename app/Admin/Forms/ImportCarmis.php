@@ -37,8 +37,8 @@ class ImportCarmis extends Form
                     'goods_id' => $input['goods_id'],
                     'carmi' => trim($val),
                     'status' => Carmis::STATUS_UNSOLD,
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s'),
+                    'created_at' => date('Y-m-d H:i'),
+                    'updated_at' => date('Y-m-d H:i'),
                 ];
             }
         }
@@ -49,9 +49,9 @@ class ImportCarmis extends Form
         // 删除文件
         Storage::disk('public')->delete($input['carmis_txt']);
         return $this
-				->response()
-				->success(admin_trans('carmis.rule_messages.import_carmis_success'))
-				->location('/carmis');
+                ->response()
+                ->success(admin_trans('carmis.rule_messages.import_carmis_success'))
+                ->location('/carmis');
     }
 
     /**
