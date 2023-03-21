@@ -146,7 +146,7 @@
     </div>
     <div class="card card-body buy-product">
         {{-- 商品详情 --}}
-        <h5 class="card-title">{{ __('hyper.buy_product_desciption') }}</h5>
+        <h4 class="card-title">{{ __('hyper.buy_product_desciption') }}</h4>
         {!! $description !!}
     </div>
 </div>
