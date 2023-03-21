@@ -115,6 +115,7 @@ class SalesCard extends Bar
      */
     public function withContent($title, $value, $style = 'success', $startTime, $endTime)
     {
+        $viewDetails = admin_trans('dujiaoka.view_details');
         $minHeight = '183px';
         $uri = admin_route('order.index', [
             'created_at[start]' => $startTime->format('Y-m-d H:i:s'),
@@ -124,13 +125,13 @@ class SalesCard extends Bar
             <<<HTML
 <div class="d-flex p-1 flex-column justify-content-between" style="padding-top: 0;width: 100%;height: 100%;min-height: {$minHeight}">
     <div class="text-left">
-        <h1 class="font-lg-2 mt-2 mb-0">{$title}￥</h1>
+        <h1 class="font-lg-2 mt-2 mb-0">¥{$title}</h1>
         <h5 class="font-medium-2" style="margin-top: 10px;">
-            <span class="text-{$style}">{$value} </span>
+            <span class="text-{$style}">{$value}</span>
         </h5>
     </div>
 
-    <a href="{$uri}" class="btn btn-primary shadow waves-effect waves-light">View Details <i class="feather icon-chevrons-right"></i></a>
+    <a href="{$uri}" class="btn btn-primary shadow waves-effect waves-light">{$viewDetails} <i class="feather icon-chevrons-right"></i></a>
 </div>
 HTML
         );

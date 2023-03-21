@@ -28,6 +28,7 @@ return [
     'last_today' => '今天',
     'last_month' => '最近一個月',
     'last_year' => '最近一年',
+    'view_details' => '查看詳情',
 
     'status_pending_number' => '待處理訂單數',
     'status_processing_number' => '處理中訂單數',

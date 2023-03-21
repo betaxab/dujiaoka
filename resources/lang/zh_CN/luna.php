@@ -26,15 +26,15 @@ return [
     'buy_loading_verification' => '正在加载验证码...',
     'buy_order_m' => '手机下单',
 
-    'query_no_order' => '没有找到订单信息。',
-    'query_no_order_tips' => '或许可以检查核对下输入的订单号，邮箱，或者查询密码是否正确哦！！',
+    'query_no_order' => '没有找到订单信息',
+    'query_no_order_tips' => '请核对您输入的订单号、邮箱，或者查询密码是否正确',
 
     'order_number' => '订单编号',
     'email' => '订单邮箱',
     'order_status' => '订单状态',
 
 
-    'least_one' => '购买数量不能低于1件',
+    'least_one' => '购买数量不能低于 1 件',
     'exceeds' => '购买数量不能多于库存数量',
     'exceeds_limit' => '购买数量不能多于限购数量',
     'mobile_order' => '扫描二维码 手机下单'

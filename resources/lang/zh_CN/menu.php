@@ -23,7 +23,7 @@ return [
         'coupon_manage' => '优惠管理',
         'coupon'        => '优惠码列表',
         'configuration' => '配置',
-        'email_template_configuration' => '邮件模板配置',
+        'email_template_configuration' => '邮件模板',
         'pay_configuration'  => '支付配置',
         'order_manage' => '销售数据',
         'order'        => '订单列表',
