@@ -110,7 +110,7 @@ return [
     'qrpay_order_expiration_date' => '订单有效期',
     'qrpay_expiration_date'       => '分钟',
     'qrpay_actual_payment'        => '商品总价',
-    'qrpay_open_app_to_pay'       => '打开app支付',
+    'qrpay_open_app_to_pay'       => '打开 APP 支付',
     'qrpay_notice'                => '通知',
     'payment_successful'          => '支付成功！',
     'order_pay_timeout'           => '支付超时！',
@@ -118,7 +118,7 @@ return [
     # searchOrder.blade.php
 
     'searchOrder_title'                  => '查询订单',
-    'searchOrder_query_tips'             => '注意：最多只能查询近5笔订单。',
+    'searchOrder_query_tips'             => '注意：最多只能查询近 5 笔订单。',
     'searchOrder_order_search_by_number' => '订单',
     'searchOrder_order_search_by_email'  => '邮箱',
     'searchOrder_order_search_by_ie'     => '缓存',
