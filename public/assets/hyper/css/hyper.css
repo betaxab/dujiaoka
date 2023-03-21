@@ -37,6 +37,7 @@ body, .wrapper, .content-page {
 }
 
 body {
+    color: #24292f;
     background-color: #fafafa;
     height: 100%;
 }
