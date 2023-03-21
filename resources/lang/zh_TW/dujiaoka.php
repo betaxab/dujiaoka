@@ -105,7 +105,6 @@ return [
         'image_verify_code_error' =>  '圖形驗證碼錯誤',
         'buy_amount_format_error' =>  '請正確填寫購買數量',
         'email_format_error' =>  '請正確填寫信箱',
-        'geetest_validate_fail' => '行為驗證未通過',
         'purchase_limit_exceeded' => '單筆購買數量超過限製',
         'coupon_does_not_exist' => '折扣碼不存在',
         'coupon_lack_of_available_opportunities' => '折扣碼可使用次數不足',

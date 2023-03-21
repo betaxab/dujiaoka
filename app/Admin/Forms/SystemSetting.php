@@ -19,8 +19,8 @@ class SystemSetting extends Form
     {
         Cache::put('system-setting', $input);
         return $this
-				->response()
-				->success(admin_trans('system-setting.rule_messages.save_system_setting_success'));
+                ->response()
+                ->success(admin_trans('system-setting.rule_messages.save_system_setting_success'));
     }
 
     /**
@@ -82,11 +82,6 @@ class SystemSetting extends Form
             $this->text('encryption', admin_trans('system-setting.fields.encryption'));
             $this->text('from_address', admin_trans('system-setting.fields.from_address'));
             $this->text('from_name', admin_trans('system-setting.fields.from_name'));
-        });
-        $this->tab(admin_trans('system-setting.labels.geetest'), function () {
-            $this->text('geetest_id', admin_trans('system-setting.fields.geetest_id'));
-            $this->text('geetest_key', admin_trans('system-setting.fields.geetest_key'));
-            $this->switch('is_open_geetest', admin_trans('system-setting.fields.is_open_geetest'))->default(BaseModel::STATUS_CLOSE);
         });
         $this->confirm(
             admin_trans('dujiaoka.warning_title'),

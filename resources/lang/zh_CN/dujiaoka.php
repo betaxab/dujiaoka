@@ -105,7 +105,6 @@ return [
         'image_verify_code_error' => '图形验证码错误',
         'buy_amount_format_error' => '请正确填写购买数量',
         'email_format_error' => '请正确填写邮箱',
-        'geetest_validate_fail' => '行为验证未通过',
         'purchase_limit_exceeded' => '单笔购买数量超过限制',
         'coupon_does_not_exist' => '优惠码不存在',
         'coupon_lack_of_available_opportunities' => '优惠码可使用次数不足',

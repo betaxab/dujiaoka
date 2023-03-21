@@ -235,14 +235,6 @@
                                         </script>
                                     </div>
                                 @endif
-                                @if(dujiaoka_config_get('is_open_geetest') == \App\Models\Goods::STATUS_OPEN)
-                                    <div class="entry code">
-                                        <span class="l-msg">{{ __('dujiaoka.behavior_verification') }}：</span>
-                                        <span id="geetest-captcha"></span>
-                                        <span id="wait-geetest-captcha"
-                                              class="show">{{ __('luna.buy_loading_verification') }}</span>
-                                    </div>
-                                @endif
                                 <div class="pay notSelection">
                                     <input type="hidden" name="payway" lay-verify="payway"
                                            value="{{ $payways[0]['id'] ?? 0 }}">
@@ -335,7 +327,6 @@
 @endsection
 @section('js')
     <script src="https://cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script>
-    <script src="https://static.geetest.com/static/tools/gt.js"></script>
     <link rel="stylesheet" href="/assets/luna/js/viewerjs/viewer.min.css">
     <script src="/assets/luna/js/viewerjs/viewer.min.js"></script>
     <script>
@@ -350,46 +341,6 @@
                     if (value > stock) return "{{ __('dujiaoka.prompt.inventory_shortage') }}"
                 }
             })
-            @if(dujiaoka_config_get('is_open_geetest') == \App\Models\Goods::STATUS_OPEN )
-                !function (url) {
-                var handlerEmbed = function (captchaObj) {
-                    form.on('submit(postOrder)', function (data) {
-                        var validate = captchaObj.getValidate();
-                        if (!validate) {
-                            layer.msg('请正确完成行为验证', {
-                                icon: 5
-                            });
-                            return false;
-                        }
-                        return true;
-                    });
-
-
-                    captchaObj.onReady(function () {
-                        $("#wait-geetest-captcha")[0].className = "hide";
-                    });
-
-                    captchaObj.appendTo("#geetest-captcha");
-                };
-                $.ajax({
-                    url     : url + "?t=" + (new Date()).getTime(),
-                    type    : "get",
-                    dataType: "json",
-                    success : function (data) {
-                        initGeetest({
-                            width      : gtWidth,
-                            gt         : data.gt,
-                            challenge  : data.challenge,
-                            product    : "popup",
-                            offline    : !data.success,
-                            new_captcha: data.new_captcha,
-                            lang       : 'zh-cn',
-                            http       : 'http' + '://'
-                        }, handlerEmbed);
-                    }
-                });
-            }('/check-geetest');
-            @endif
             form.on('submit(postOrder)', function (data) {
                 if (data.field.payway == null) {
                     layer.msg("{{ __('dujiaoka.prompt.please_select_mode_of_payment') }}", {
