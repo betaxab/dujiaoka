@@ -31,9 +31,9 @@ class GoodsController extends AdminController
             $grid->column('id')->sortable();
             $grid->column('picture')->image('', 100, 100);
             $grid->column('gd_name');
-            $grid->column('gd_description');
-            $grid->column('gd_keywords');
-            $grid->column('group.gp_name', admin_trans('goods.fields.group_id'));
+            // $grid->column('gd_description');
+            // $grid->column('gd_keywords');
+            // $grid->column('group.gp_name', admin_trans('goods.fields.group_id'));
             $grid->column('type')
                 ->using(GoodsModel::getGoodsTypeMap())
                 ->label([
@@ -56,7 +56,7 @@ class GoodsController extends AdminController
             $grid->column('ord')->editable()->sortable();
             $grid->column('is_open')->switch();
             $grid->column('created_at')->sortable();
-            $grid->column('updated_at');
+            // $grid->column('updated_at');
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
                 $filter->like('gd_name');
