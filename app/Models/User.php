@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -41,4 +43,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * 关联受邀用户
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
+     */
+    public function invite_user()
+    {
+        return $this->belongsTo(self::class, 'invite_user_id', 'id');
+    }
 }

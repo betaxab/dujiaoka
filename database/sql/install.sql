@@ -487,4 +487,26 @@ INSERT INTO `pays` VALUES (23, 'Epusdt[trc20]', 'epusdt', 1, 3, 'API密钥', '�
 -- ----------------------------
 COMMIT;
 
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+                        `id` bigint NOT NULL AUTO_INCREMENT,
+                        `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '邮箱',
+                        `invite_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '邀请人 ID',
+                        `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '密码',
+                        `balance` decimal(8,2) NOT NULL DEFAULT '0.00' COMMENT '余额',
+                        `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '账号状态 1:正常 2:禁止登录',
+                        `level` int(11) NULL DEFAULT 0 COMMENT '等级',
+                        `last_login_ip` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '最后登录 IP',
+                        `last_login_at` timestamp NULL DEFAULT NULL COMMENT '最后登录时间',
+                        `remarks` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
+                        `remember_token` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+                        `created_at` timestamp NULL DEFAULT NULL,
+                        `updated_at` timestamp NULL DEFAULT NULL,
+                        `deleted_at` timestamp NULL DEFAULT NULL,
+                        PRIMARY KEY (`id`) USING BTREE,
+                        UNIQUE KEY `user_email_unique` (`email`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `admin_menu` VALUES (26, 0, 26, '用户管理', 'fa-users', '/user', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
+
 SET FOREIGN_KEY_CHECKS = 1;
