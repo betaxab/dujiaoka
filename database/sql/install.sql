@@ -507,6 +507,21 @@ CREATE TABLE `users` (
                         UNIQUE KEY `user_email_unique` (`email`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+DROP TABLE IF EXISTS `commission_log`;
+CREATE TABLE `commission_log` (
+                        `id` bigint NOT NULL AUTO_INCREMENT,
+                        `user_id` int(11) unsigned NOT NULL COMMENT '用户 ID',
+                        `order_id` int(11) unsigned NOT NULL COMMENT '订单 ID',
+                        `amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '佣金金额',
+                        `withdraw_id` int(11) DEFAULT NULL COMMENT '提现 ID',
+                        `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态 1可提现 2已提现',
+                        `created_at` timestamp NULL DEFAULT NULL,
+                        `updated_at` timestamp NULL DEFAULT NULL,
+                        PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 INSERT INTO `admin_menu` VALUES (26, 0, 26, '用户管理', 'fa-users', '/user', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
 
+INSERT INTO `admin_menu` VALUES (27, 0, 27, '佣金结算', 'fa-university', NULL, '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
+INSERT INTO `admin_menu` VALUES (28, 27, 28, '佣金记录', 'fa-calendar-check-o', '/commission-log', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
 SET FOREIGN_KEY_CHECKS = 1;
