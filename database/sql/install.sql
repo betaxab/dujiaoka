@@ -520,8 +520,24 @@ CREATE TABLE `commission_log` (
                         PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+DROP TABLE IF EXISTS `withdraw_log`;
+CREATE TABLE `withdraw_log` (
+                        `id` bigint NOT NULL AUTO_INCREMENT,
+                        `user_id` int(11) unsigned NOT NULL COMMENT '用户 ID',
+                        `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1转余额 2提现',
+                        `withdrawal_method` varchar(191) NULL DEFAULT NULL COMMENT '提现方式',
+                        `withdraw_account` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '提现账号',
+                        `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '提现状态 0待审核 1已完成',
+                        `amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '提现金额',
+                        `created_at` timestamp NULL DEFAULT NULL,
+                        `updated_at` timestamp NULL DEFAULT NULL,
+                        PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 INSERT INTO `admin_menu` VALUES (26, 0, 26, '用户管理', 'fa-users', '/user', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
 
 INSERT INTO `admin_menu` VALUES (27, 0, 27, '佣金结算', 'fa-university', NULL, '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
 INSERT INTO `admin_menu` VALUES (28, 27, 28, '佣金记录', 'fa-calendar-check-o', '/commission-log', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
+INSERT INTO `admin_menu` VALUES (29, 27, 29, '提现记录', 'fa-usd', '/withdraw', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
+
 SET FOREIGN_KEY_CHECKS = 1;
