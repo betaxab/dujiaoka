@@ -145,5 +145,11 @@ return [
         'bill' => '订单确认',
         'order-detail' => '订单详情',
         'order-search' => '订单查询'
+    ],
+
+    'login' => [
+        'email_does_not_exist' => '邮箱不存在',
+        'user_has_been_banned' => '用户已被封禁，请联系管理员',
+        'login_info_error' => '邮箱或密码错误'
     ]
 ];

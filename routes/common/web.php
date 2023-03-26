@@ -7,7 +7,6 @@
  * @link      http://utf8.hk/
  */
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Home\HomeController;
 
 Route::group(['middleware' => ['dujiaoka.boot'],'namespace' => 'Home'], function () {
     // 首页
@@ -30,6 +29,14 @@ Route::group(['middleware' => ['dujiaoka.boot'],'namespace' => 'Home'], function
     Route::post('search-order-by-email', 'OrderController@searchOrderByEmail');
     // 通过浏览器查询
     Route::post('search-order-by-browser', 'OrderController@searchOrderByBrowser');
+});
+
+Route::group(['middleware' => ['dujiaoka.boot'],'namespace' => 'Auth'], function () {
+    // 登录
+    Route::get('/login', 'AuthController@login')->name('login');
+    Route::post('/login', 'AuthController@loginHandler');
+    // 退出登录
+    Route::get('/logout', 'AuthController@logout');
 });
 
 Route::group(['middleware' => ['install.check'],'namespace' => 'Home'], function () {

@@ -130,4 +130,15 @@ return [
     'searchOrder_input_order_number'     => '请输入订单编号',
     'searchOrder_input_email'            => '请输入邮箱',
     'searchOrder_input_query_password'   => '请输入查询密码',
+
+    # login.blade.php
+    'login_email' => '邮箱',
+    'login_email_placeholder' => '请输入邮箱',
+    'login_password' => '密码',
+    'login_password_placeholder' => '请输入密码',
+    'login_login' => '立即登录',
+    'register_account_tip' => '没有账号？',
+    'login_register' => '注册账号',
+    'login_email_error' => '登录邮箱格式错误',
+    'login_password_empty' => '密码不能为空'
 ];
