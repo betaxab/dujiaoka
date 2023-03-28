@@ -39,6 +39,11 @@ Route::group(['middleware' => ['dujiaoka.boot'],'namespace' => 'Auth'], function
     Route::get('/logout', 'AuthController@logout');
 });
 
+Route::group(['middleware' => 'auth:web','namespace' => 'User'], function () {
+    // 用户中心首页
+    Route::get('/user', 'UserController@index');
+});
+
 Route::group(['middleware' => ['install.check'],'namespace' => 'Home'], function () {
     // 安装
     Route::get('install', 'HomeController@install');

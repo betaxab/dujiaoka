@@ -140,5 +140,18 @@ return [
     'register_account_tip' => '没有账号？',
     'login_register' => '注册账号',
     'login_email_error' => '登录邮箱格式错误',
-    'login_password_empty' => '密码不能为空'
+    'login_password_empty' => '密码不能为空',
+
+    # user.blade.php
+    'user_balance' => '账户余额',
+    'user_balance_note' => '充值可享优惠',
+    'user_topup' => '立即充值',
+    'user_commission_order' => '佣金订单',
+    'user_commission_order_note' => '邀请好友购买，赚取佣金',
+    'user_view_invitation' => '查看邀请',
+    'user_order_list_title' => '订单列表',
+    'user_payment_amount' => '支付金额',
+    'user_creation_time' => '创建时间',
+    'user_action' => '操作'
+
 ];
