@@ -9,6 +9,7 @@ return [
     'error_error'         => '错误',
     'order_search'        => '查询订单',
     'global_currency'     => '¥',
+    'success' => '成功',
 
     # home.blade.php
 
@@ -141,6 +142,30 @@ return [
     'login_register' => '注册账号',
     'login_email_error' => '登录邮箱格式错误',
     'login_password_empty' => '密码不能为空',
+
+    # register.blade.php
+    'register_email' => '邮箱',
+    'register_email_placeholder' => '请输入邮箱',
+    'register_verification_code' => '验证码',
+    'register_verification_code_placeholder' => '请输入验证码',
+    'register_send_code' => '发送验证码',
+    'register_send_code_wait' => '秒后再次发送',
+    'register_password' => '密码',
+    'register_password_placeholder' => '请输入密码',
+    'register_password2' => '确认密码',
+    'register_password2_placeholder' => '请再输入一遍密码',
+    'register_invite_code' => '邀请码（选填）',
+    'register_invite_code_placeholder' => '请输入邀请码',
+    'register_register_now' => '立即登录',
+    'register_have_account' => '已有账号？',
+    'register_back_to_login' => '返回登录',
+    'register_sent_successfully' => '发送成功',
+    'register_email_empty' => '邮箱不能为空！',
+    'register_email_error' => '注册邮箱格式错误',
+    'register_verification_code_empty' => '验证码不能为空！',
+    'register_password_empty' => '密码不能为空！',
+    'register_password2_empty' => '确认密码不能为空！',
+    'register_password_doesnt_match' => '两次输入的密码不一致！',
 
     # user.blade.php
     'user_balance' => '账户余额',

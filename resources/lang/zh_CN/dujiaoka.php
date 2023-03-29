@@ -158,5 +158,14 @@ return [
         'code_sent_err_message' => '邮箱验证码已发送，请稍后再试',
         'email_already_exists' => '邮箱已存在',
         'sent_successfully' => '发送成功',
+    ],
+
+    'register' => [
+        'email_verification_code_cannot_be_empty' => '邮箱验证码不能为空',
+        'email_verification_code_incorrect' => '邮箱验证码不正确',
+        'password_length_too_short' => '密码不能小于 8 位数',
+        'email_already_exists' => '邮箱已存在',
+        'invitation_code_does_not_exist' => '邀请码不存在',
+        'unknown_error_failed_to_register' => '未知错误，注册失败'
     ]
 ];

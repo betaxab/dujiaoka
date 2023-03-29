@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\BaseController;
 use App\Models\User;
 use App\Models\Emailtpl;
+use App\Models\InviteCode;
 use App\Jobs\MailSend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -86,6 +87,67 @@ class AuthController extends BaseController
         Cache::put('LAST_SEND_EMAIL_CODE_TIMESTAMP_'.md5($email), time(), 60);
 
         return response()->json(['code' => 1, 'message' => __('dujiaoka.send-code.sent_successfully')]);
+    }
+
+    public function register()
+    {
+        return $this->render('static_pages/register');
+    }
+
+    public function registerHandler(Request $request)
+    {
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        if (empty($request->input('email_verification_code'))) {
+            return $this->err(__('dujiaoka.register.email_verification_code_cannot_be_empty'));
+        }
+
+        if (Cache::get('EMAIL_VERIFICATION_CODE_'.md5($email)) !== $request->input('email_verification_code')) {
+            return $this->err(__('dujiaoka.register.email_verification_code_incorrect'));
+        }
+
+        if (strlen($password) < 8){
+            return $this->err(__('dujiaoka.register.password_length_too_short'));
+        }
+        if (User::query()->where('email', $email)->exists()){
+            return $this->err(__('dujiaoka.register.email_already_exists'));
+        }
+
+        // 创建用户信息
+        $user = new User();
+        $user->email = $email;
+        $user->password = bcrypt($password);
+
+        $user->last_login_ip = $request->ip();
+        $user->last_login_at = now()->toDateTimeString();
+
+        if ($request->input('invite_code')) {
+            $inviteCode = InviteCode::where('code', $request->input('invite_code'))
+                ->where('status', 0)
+                ->first();
+            if (!$inviteCode) {
+                return $this->err(__('dujiaoka.register.invitation_code_does_not_exist'));
+            } else {
+                $user->invite_user_id = $inviteCode->user_id ? $inviteCode->user_id : null;
+                $inviteCode->status = 1;
+                $inviteCode->save();
+            }
+        }
+
+        if (!$user->save()) {
+            return $this->err(__('dujiaoka.register.unknown_error_failed_to_register'));
+        }
+
+        // 保存前清除验证码缓存
+        Cache::forget('EMAIL_VERIFICATION_CODE_'.md5($email));
+
+        $user->save();
+
+        // 登录并跳转至用户中心
+        Auth::login($user, true);
+
+        return redirect()->to('/user');
     }
 
     /**
