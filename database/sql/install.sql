@@ -534,10 +534,23 @@ CREATE TABLE `withdraw_log` (
                         PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `admin_menu` VALUES (26, 0, 26, '用户管理', 'fa-users', '/user', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
+DROP TABLE IF EXISTS `invite_code`;
+CREATE TABLE `invite_code` (
+                        `id` int(11) NOT NULL AUTO_INCREMENT,
+                        `user_id` int(11) NOT NULL,
+                        `code` char(32) NOT NULL,
+                        `status` tinyint(1) NOT NULL DEFAULT '0',
+                        `pv` int(11) NOT NULL DEFAULT '0',
+                        `created_at` timestamp NULL DEFAULT NULL,
+                        `updated_at` timestamp NULL DEFAULT NULL,
+                        PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `admin_menu` VALUES (27, 0, 27, '佣金结算', 'fa-university', NULL, '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
-INSERT INTO `admin_menu` VALUES (28, 27, 28, '佣金记录', 'fa-calendar-check-o', '/commission-log', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
-INSERT INTO `admin_menu` VALUES (29, 27, 29, '提现记录', 'fa-usd', '/withdraw', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
+INSERT INTO `admin_menu` VALUES (26, 0, 26, '用户', 'fa-users', NULL, '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
+INSERT INTO `admin_menu` VALUES (27, 26, 27, '用户管理', 'fa-address-card-o', '/user', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
+INSERT INTO `admin_menu` VALUES (28, 26, 28, '邀请码管理', 'fa-envelope-open-o', '/invitecode', '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
+INSERT INTO `admin_menu` VALUES (29, 0, 29, '佣金', 'fa-university', NULL, '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
+INSERT INTO `admin_menu` VALUES (30, 29, 30, '佣金记录', 'fa-calendar-check-o', '/commission-log', '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
+INSERT INTO `admin_menu` VALUES (31, 29, 31, '结算记录', 'fa-usd', '/withdraw', '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
 
 SET FOREIGN_KEY_CHECKS = 1;

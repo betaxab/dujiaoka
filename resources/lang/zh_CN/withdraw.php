@@ -1,8 +1,8 @@
 <?php
 return [
     'labels' => [
-        'Withdraw' => '提现记录',
-        'withdraw' => '提现记录',
+        'Withdraw' => '结算记录',
+        'withdraw' => '结算记录',
     ],
     'fields' => [
         'user_id' => '用户 ID',

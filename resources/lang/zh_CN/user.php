@@ -14,7 +14,8 @@ return [
         'status' => '状态',
         'invite_user_id' => '邀请人 ID',
         'remarks' => '备注',
-        'dont_change_pass_placeholder' => '留空表示不修改密码'
+        'dont_change_pass_placeholder' => '留空表示不修改密码',
+        'invite_code' => '邀请码'
     ],
     'options' => [
     ],
