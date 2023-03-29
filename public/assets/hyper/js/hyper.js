@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 	let tipsSvg = '<svg style="vertical-align: middle;margin-right: 5px" t="1602926160057" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2429" data-spm-anchor-id="a313x.7781069.0.i27" width="30" height="30"><path d="M320.512 850.944l-71.68-40.96 60.416-104.448 34.816-21.504h478.208V254.976H201.728v347.136h-81.92V214.016l40.96-40.96h702.464l40.96 40.96v510.976l-40.96 40.96H368.64z" fill="#ffffff" p-id="2430" data-spm-anchor-id="a313x.7781069.0.i25" class="selected"></path><path d="M481.28 431.104h61.44v61.44h-61.44zM284.672 431.104h61.44v61.44h-61.44zM677.888 431.104h61.44v61.44h-61.44z" fill="#ffffff" p-id="2431" data-spm-anchor-id="a313x.7781069.0.i23" class="selected"></path></svg>';
 	let qrSvg = '<svg style="vertical-align: middle;margin-right: 5px" t="1602927606509" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4167" width="30" height="30"><path d="M146.432 336.896h-81.92V106.496l40.96-40.96h231.424v81.92H146.432zM336.896 958.464H105.472l-40.96-40.96V687.104h81.92v189.44h190.464zM956.416 336.896h-81.92V147.456H684.032v-81.92h231.424l40.96 40.96zM915.456 958.464H613.376v-81.92h261.12V659.456h81.92v258.048z" fill="#ffffff" p-id="4168" data-spm-anchor-id="a313x.7781069.0.i59" class="selected"></path><path d="M326.656 334.848h61.44v98.304h-61.44zM415.744 575.488h61.44v133.12h-61.44zM265.216 575.488h61.44v114.688h-61.44zM566.272 575.488h61.44v98.304h-61.44zM706.56 575.488h61.44v154.624h-61.44zM477.184 297.984h61.44v135.168h-61.44zM627.712 329.728h61.44v103.424h-61.44z" fill="#ffffff" p-id="4169" data-spm-anchor-id="a313x.7781069.0.i58" class="selected"></path><path d="M10.24 473.088h1003.52v61.44H10.24z" fill="#ffffff" p-id="4170" data-spm-anchor-id="a313x.7781069.0.i57" class="selected"></path></svg>';
 	let alipaySvg = '<svg t="1602939269695" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1127" width="32" height="32"><path d="M902.095 652.871l-250.96-84.392s19.287-28.87 39.874-85.472c20.59-56.606 23.539-87.689 23.539-87.689l-162.454-1.339v-55.487l196.739-1.387v-39.227H552.055v-89.29h-96.358v89.294H272.133v39.227l183.564-1.304v59.513h-147.24v31.079h303.064s-3.337 25.223-14.955 56.606c-11.615 31.38-23.58 58.862-23.58 58.862s-142.3-49.804-217.285-49.804c-74.985 0-166.182 30.123-175.024 117.55-8.8 87.383 42.481 134.716 114.728 152.139 72.256 17.513 138.962-0.173 197.04-28.607 58.087-28.391 115.081-92.933 115.081-92.933l292.486 142.041c-11.932 69.3-72.067 119.914-142.387 119.844H266.37c-79.714 0.078-144.392-64.483-144.466-144.194V266.374c-0.074-79.72 64.493-144.399 144.205-144.47h491.519c79.714-0.073 144.396 64.49 144.466 144.203v386.764z m-365.76-48.895s-91.302 115.262-198.879 115.262c-107.623 0-130.218-54.767-130.218-94.155 0-39.34 22.373-82.144 113.943-88.333 91.519-6.18 215.2 67.226 215.2 67.226h-0.047z" fill="#02A9F1" p-id="1128" data-spm-anchor-id="a313x.7781069.0.i1" class="selected"></path></svg>';
@@ -9,24 +9,24 @@ $(function() {
 	let coinbaseSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" version="1.1" viewBox="0 0 32 32"><circle style="opacity:0.2" cx="16" cy="17" r="14"/><circle style="fill:#f7931a" cx="16" cy="16" r="14"/><path style="opacity:0.2" d="m 13,8 0,3 -3.0000007,0 0,2.000001 c 0,0 1.1456507,-0.01999 1.1273687,0 0.613377,-0.0093 0.808708,0.436058 0.872215,0.733073 l 0,6.600259 c -0.02351,0.1877 -0.0035,0.653333 -0.432202,0.666667 0.0198,0.01733 -1.5673817,0 -1.5673817,0 l 0,2 2.1688177,0 C 12.535544,22.98667 12.645729,23 13,23 l 0,3 2,0 0,-3 0.97917,0 0.04166,3 L 18,26 17.97917,23 C 20.52239,22.815365 22,21.597881 21.983179,19.5 22,17.570087 20.456651,16.506411 19.5,16.5 20.456506,16.503769 21,15.463447 21,14 21,12 19.619804,11 17.999999,11 l 0,-3 L 16,8 l 0,3 c -0.398082,0 -0.595857,-0.01467 -1,0 l 0,-3 z m 2,5.000001 C 17,13 18,13 18,14.5 18,16 17,16 15,16 Z M 15,18 c 2.666111,8.3e-5 4.000276,-0.166641 4,1.5 2.76e-4,1.666775 -1.333889,1.5 -4,1.5 z"/><path style="fill:#ffffff" d="m 13,7 0,2.9999995 -3.0000007,0 0,2.0000015 c 0,0 1.1456507,-0.01999 1.1273687,0 0.613377,-0.0093 0.808708,0.436058 0.872215,0.733073 l 0,6.600259 c -0.02351,0.1877 -0.0035,0.653333 -0.432202,0.666667 0.0198,0.01733 -1.5673817,0 -1.5673817,0 l 0,2 2.1688177,0 C 12.535544,21.98667 12.645729,22 13,22 l 0,3 2,0 0,-3 0.97917,0 0.04166,3 L 18,25 17.97917,22 C 20.52239,21.815365 22,20.597881 21.983179,18.5 22,16.570087 20.456651,15.506411 19.5,15.5 20.456506,15.503769 21,14.463447 21,13 21,11 19.619804,10 17.999999,10 l 0,-3 L 16,7 l 0,3 c -0.398082,0 -0.595857,-0.01467 -1,0 l 0,-3 z m 2,5.000001 C 17,12 18,12 18,13.5 18,15 17,15 15,15 Z M 15,17 c 2.666111,8.3e-5 4.000276,-0.166641 4,1.5 2.76e-4,1.666775 -1.333889,1.5 -4,1.5 z"/><path style="fill:#ffffff;opacity:0.2" d="M 16 2 A 14 14 0 0 0 2 16 A 14 14 0 0 0 2.0214844 16.585938 A 14 14 0 0 1 16 3 A 14 14 0 0 1 29.978516 16.414062 A 14 14 0 0 0 30 16 A 14 14 0 0 0 16 2 z"/></svg>';
 	let epusdtSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 2000" width="32" height="32"><path d="M1000,0c552.26,0,1000,447.74,1000,1000S1552.24,2000,1000,2000,0,1552.38,0,1000,447.68,0,1000,0" fill="#53ae94"/><path d="M1123.42,866.76V718H1463.6V491.34H537.28V718H877.5V866.64C601,879.34,393.1,934.1,393.1,999.7s208,120.36,484.4,133.14v476.5h246V1132.8c276-12.74,483.48-67.46,483.48-133s-207.48-120.26-483.48-133m0,225.64v-0.12c-6.94.44-42.6,2.58-122,2.58-63.48,0-108.14-1.8-123.88-2.62v0.2C633.34,1081.66,451,1039.12,451,988.22S633.36,894.84,877.62,884V1050.1c16,1.1,61.76,3.8,124.92,3.8,75.86,0,114-3.16,121-3.8V884c243.8,10.86,425.72,53.44,425.72,104.16s-182,93.32-425.72,104.18" fill="#fff"/></svg>';
 	let paySvgArr = {
-		zfbf2f     : alipaySvg,
-		aliweb     : alipaySvg,
-		mqq        : qqSvg,
-		mzfb       : alipaySvg,
-		mwx        : weChatSvg,
-		pszfb      : alipaySvg,
-		pswx       : weChatSvg,
-		wescan     : weChatSvg,
+		zfbf2f: alipaySvg,
+		aliweb: alipaySvg,
+		mqq: qqSvg,
+		mzfb: alipaySvg,
+		mwx: weChatSvg,
+		pszfb: alipaySvg,
+		pswx: weChatSvg,
+		wescan: weChatSvg,
 		payjswescan: weChatSvg,
-		alipay     : alipaySvg,
-		wxpay      : weChatSvg,
-		qqpay      : qqSvg,
-		paypal     : paypal,
-		mgcoin     : otherSvg,
-		coinbase   : coinbaseSvg,
-		epusdt     : epusdtSvg,
-		vzfb       : alipaySvg,
-		vwx        : weChatSvg,
+		alipay: alipaySvg,
+		wxpay: weChatSvg,
+		qqpay: qqSvg,
+		paypal: paypal,
+		mgcoin: otherSvg,
+		coinbase: coinbaseSvg,
+		epusdt: epusdtSvg,
+		vzfb: alipaySvg,
+		vwx: weChatSvg,
 	};
 	// 付款方式按钮
 	$('.pay-type').each(function () {
@@ -41,7 +41,7 @@ $(function() {
 		$(this).toggleClass("active");
 		$('input[name=payway]').val($(this).data('id'));
 	});
-		$(window).scroll(function () {
+	$(window).scroll(function () {
 		if ($(window).scrollTop() >= 100) {
 			$(".back-to-top").fadeIn(600);
 		} else {
@@ -59,46 +59,76 @@ $(function() {
 	if (new Date().getTime() > expiration || expiration == null) {
 		$('#notice-modal').modal();
 		let setTime = new Date().getTime() + (1 * 60 * 60 * 1000);
-		localStorage.setItem("announcement",setTime);
+		localStorage.setItem("announcement", setTime);
 	}
 	// 版权
-	console.group("Faka");console.log("Name: 独角数卡");console.log("Github: https://github.com/assimon/dujiaoka");console.groupEnd();
-	console.group("Theme");console.log("Name: Hyper Theme");console.log("Author: Bimoes");console.groupEnd();
+	console.group("Faka"); console.log("Name: 独角数卡"); console.log("Github: https://github.com/assimon/dujiaoka"); console.groupEnd();
+	console.group("Theme"); console.log("Name: Hyper Theme"); console.log("Author: Bimoes"); console.groupEnd();
 });
 // 图片懒加载
 $(function () {
-  var imgArr = document.querySelectorAll("img[data-src]");
-  for (var i = 0; i < imgArr.length; i++) {
-    imgArr[i].style.opacity = "0";
-  }
-  Limg();
-  window.addEventListener("scroll", function () {
-    Limg();
-  });
-  function Limg() {
-    var viewHeight = document.documentElement.clientHeight
-    var limg = document.querySelectorAll("img[data-src]")
-    Array.prototype.forEach.call(limg, function (item, index) {
-      var rect
-      if (item.getAttribute("data-src") === "")
-        return
-      rect = item.getBoundingClientRect()
-      if (rect.bottom >= 0 && rect.top < viewHeight) {
-        (function () {
-          var img = new Image()
-          img.src = item.getAttribute("data-src")
-          item.src = img.src
-          var j = 0
-          setInterval(function () {
-            j += 0.2
-            if (j <= 1) {
-              item.style.opacity = j
-              return
-            }
-          }, 100)
-          item.removeAttribute('data-src')
-        })()
-      }
-    })
-  }
+	var imgArr = document.querySelectorAll("img[data-src]");
+	for (var i = 0; i < imgArr.length; i++) {
+		imgArr[i].style.opacity = "0";
+	}
+	Limg();
+	window.addEventListener("scroll", function () {
+		Limg();
+	});
+	function Limg() {
+		var viewHeight = document.documentElement.clientHeight
+		var limg = document.querySelectorAll("img[data-src]")
+		Array.prototype.forEach.call(limg, function (item, index) {
+			var rect
+			if (item.getAttribute("data-src") === "")
+				return
+			rect = item.getBoundingClientRect()
+			if (rect.bottom >= 0 && rect.top < viewHeight) {
+				(function () {
+					var img = new Image()
+					img.src = item.getAttribute("data-src")
+					item.src = img.src
+					var j = 0
+					setInterval(function () {
+						j += 0.2
+						if (j <= 1) {
+							item.style.opacity = j
+							return
+						}
+					}, 100)
+					item.removeAttribute('data-src')
+				})()
+			}
+		})
+	}
 });
+// cookie
+function getQueryVariable(variable) {
+	const query = window.location.search.substring(1);
+	const vars = query.split("&");
+	for (let i = 0; i < vars.length; i++) {
+		let pair = vars[i].split("=");
+		if (pair[0] == variable) {
+			return pair[1];
+		}
+	}
+	return "";
+}
+if (getQueryVariable('invitecode')) {
+	setCookie('invitecode', getQueryVariable('invitecode'), 30);
+}
+function setCookie(cname, cvalue, exdays) {
+	const d = new Date();
+	d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	let expires = "expires=" + d.toGMTString();
+	document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+function getCookie(cname) {
+	const ca = document.cookie.split(';');
+	let name = cname + "=";
+	for (let i = 0; i < ca.length; i++) {
+		let c = ca[i].trim();
+		if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+	}
+	return "";
+}
