@@ -151,5 +151,12 @@ return [
         'email_does_not_exist' => '邮箱不存在',
         'user_has_been_banned' => '用户已被封禁，请联系管理员',
         'login_info_error' => '邮箱或密码错误'
+    ],
+
+    'send-code' => [
+        'ip_rate_limit_err' => '请勿频繁发送验证码',
+        'code_sent_err_message' => '邮箱验证码已发送，请稍后再试',
+        'email_already_exists' => '邮箱已存在',
+        'sent_successfully' => '发送成功',
     ]
 ];

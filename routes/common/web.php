@@ -37,6 +37,8 @@ Route::group(['middleware' => ['dujiaoka.boot'],'namespace' => 'Auth'], function
     Route::post('/login', 'AuthController@loginHandler');
     // 退出登录
     Route::get('/logout', 'AuthController@logout');
+    // 发送验证码
+    Route::post('/send/mailverification', 'AuthController@sendMailVerification');
 });
 
 Route::group(['middleware' => 'auth:web','namespace' => 'User'], function () {
