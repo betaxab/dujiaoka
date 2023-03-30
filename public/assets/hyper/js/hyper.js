@@ -114,8 +114,8 @@ function getQueryVariable(variable) {
 	}
 	return "";
 }
-if (getQueryVariable('invitecode')) {
-	setCookie('invitecode', getQueryVariable('invitecode'), 30);
+if (getQueryVariable('code')) {
+	setCookie('invitecode', getQueryVariable('code'), 30);
 }
 function setCookie(cname, cvalue, exdays) {
 	const d = new Date();

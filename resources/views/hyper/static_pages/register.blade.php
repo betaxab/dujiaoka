@@ -67,8 +67,8 @@
         }
         num--;
     }
-    if (getCookie('affcode') != '') {
-        $("input[name='invite_code']").val(getCookie('affcode'));
+    if (getCookie('invitecode') != '') {
+        $("input[name='invite_code']").val(getCookie('invitecode'));
     }
     $('#send_code').click(function () {
         $.post("/send/mailverification", {
