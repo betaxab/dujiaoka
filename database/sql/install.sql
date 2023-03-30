@@ -487,24 +487,40 @@ INSERT INTO `pays` VALUES (23, 'Epusdt[trc20]', 'epusdt', 1, 3, 'API密钥', '�
 -- ----------------------------
 COMMIT;
 
+DROP TABLE IF EXISTS `user_group`;
+CREATE TABLE `user_group` (
+                        `id` int(11) NOT NULL AUTO_INCREMENT,
+                        `name` varchar(255) NOT NULL COMMENT '分组名称',
+                        `ord` int NOT NULL DEFAULT '1' COMMENT '排序权重 越大越靠前',
+                        `created_at` timestamp NULL DEFAULT NULL,
+                        `updated_at` timestamp NULL DEFAULT NULL,
+                        `deleted_at` timestamp NULL DEFAULT NULL,
+                        PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
                         `id` bigint NOT NULL AUTO_INCREMENT,
                         `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '邮箱',
                         `invite_user_id` int(11) NOT NULL DEFAULT '0' COMMENT '邀请人 ID',
+                        `telegram_id` bigint(20) DEFAULT NULL,
                         `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '密码',
                         `balance` decimal(8,2) NOT NULL DEFAULT '0.00' COMMENT '余额',
+                        `discount` int(11) DEFAULT NULL COMMENT '专享折扣',
+                        `commission_type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0: system 1: period 2: onetime',
+                        `commission_rate` int(11) DEFAULT NULL,
                         `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '账号状态 1:正常 2:禁止登录',
                         `level` int(11) NULL DEFAULT 0 COMMENT '等级',
                         `last_login_ip` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '最后登录 IP',
                         `last_login_at` timestamp NULL DEFAULT NULL COMMENT '最后登录时间',
+                        `group_id` int(11) DEFAULT NULL,
                         `remarks` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
                         `remember_token` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
                         `created_at` timestamp NULL DEFAULT NULL,
                         `updated_at` timestamp NULL DEFAULT NULL,
                         `deleted_at` timestamp NULL DEFAULT NULL,
                         PRIMARY KEY (`id`) USING BTREE,
-                        UNIQUE KEY `user_email_unique` (`email`) USING BTREE
+                        UNIQUE KEY `email` (`email`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 DROP TABLE IF EXISTS `commission_log`;
@@ -547,11 +563,12 @@ CREATE TABLE `invite_code` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `admin_menu` VALUES (26, 0, 26, '用户', 'fa-users', NULL, '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
-INSERT INTO `admin_menu` VALUES (27, 26, 27, '用户管理', 'fa-address-card-o', '/user', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
-INSERT INTO `admin_menu` VALUES (28, 26, 28, '邀请码管理', 'fa-envelope-open-o', '/invitecode', '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
-INSERT INTO `admin_menu` VALUES (29, 0, 29, '佣金', 'fa-university', NULL, '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
-INSERT INTO `admin_menu` VALUES (30, 29, 30, '佣金记录', 'fa-calendar-check-o', '/commission-log', '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
-INSERT INTO `admin_menu` VALUES (31, 29, 31, '结算记录', 'fa-usd', '/withdraw', '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
+INSERT INTO `admin_menu` VALUES (27, 26, 27, '用户分组', 'fa-users', '/user-group', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
+INSERT INTO `admin_menu` VALUES (28, 26, 28, '用户管理', 'fa-address-card-o', '/user', '', 1, '2023-03-24 09:00:00', '2023-03-24 09:00:00');
+INSERT INTO `admin_menu` VALUES (29, 26, 29, '邀请码管理', 'fa-envelope-open-o', '/invitecode', '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
+INSERT INTO `admin_menu` VALUES (30, 0, 30, '佣金', 'fa-university', NULL, '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
+INSERT INTO `admin_menu` VALUES (31, 30, 31, '佣金记录', 'fa-calendar-check-o', '/commission-log', '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
+INSERT INTO `admin_menu` VALUES (32, 30, 32, '结算记录', 'fa-usd', '/withdraw', '', 1, '2023-03-29 06:00:00', '2023-03-29 06:00:00');
 
 INSERT INTO `emailtpls` VALUES (7, '【{webname}】注册验证码', '<p>&nbsp;</p>\r\n<p>&nbsp;</p>\r\n<table class=\"body-wrap\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; background-color: #f6f6f6; margin: 0;\" bgcolor=\"#f6f6f6\">\r\n<tbody>\r\n<tr style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;\">\r\n<td style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0;\" valign=\"top\">&nbsp;</td>\r\n<td class=\"container\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto;\" valign=\"top\" width=\"600\">\r\n<div class=\"content\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; max-width: 600px; display: block; margin: 0 auto; padding: 20px;\">\r\n<table class=\"main\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; border-radius: 3px; background-color: #fff; margin: 0; border: 1px solid #e9e9e9;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"#fff\">\r\n<tbody>\r\n<tr style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;\">\r\n<td class=\"content-wrap aligncenter\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: center; margin: 0; padding: 20px;\" align=\"center\" valign=\"top\">\r\n<table style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\">\r\n<tbody>\r\n<tr style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;\">\r\n<td class=\"content-block\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;\" valign=\"top\">\r\n<h1 class=\"aligncenter\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,\'Lucida Grande\',sans-serif; box-sizing: border-box; font-size: 32px; color: #000; line-height: 1.2em; font-weight: 500; text-align: center; margin: 40px 0 0;\" align=\"center\">{webname}</h1>\r\n</td>\r\n</tr>\r\n<tr style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;\">\r\n<td class=\"content-block\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;\" valign=\"top\">\r\n<h2 class=\"aligncenter\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,\'Lucida Grande\',sans-serif; box-sizing: border-box; font-size: 24px; color: #000; line-height: 1.2em; font-weight: 400; text-align: center; margin: 40px 0 0;\" align=\"center\">感谢注册！</h2>\r\n</td>\r\n</tr>\r\n<tr style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;\">\r\n<td class=\"content-block aligncenter\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;\" align=\"center\" valign=\"top\">\r\n<table class=\"invoice\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; text-align: left; width: 80%; margin: 40px auto;\">\r\n<tbody>\r\n<tr style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;\">\r\n<td style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 5px 0;\" valign=\"top\">\r\n<p>验证码: <strong>{code}</strong></p>\r\n<p><br style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;\" />验证码 10 分钟之内有效。</p>\r\n</td>\r\n</tr>\r\n<tr style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;\">\r\n<td style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 5px 0;\" valign=\"top\">&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n<tr style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;\">\r\n<td class=\"content-block aligncenter\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;\" align=\"center\" valign=\"top\"><a style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; color: #348eda; text-decoration: underline; margin: 0;\" href=\"{weburl}\">{webname}</a></td>\r\n</tr>\r\n<tr style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;\">\r\n<td class=\"content-block aligncenter\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;\" align=\"center\" valign=\"top\">{webname} Inc. {created_at}</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n</td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<div class=\"footer\" style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; width: 100%; clear: both; color: #999; margin: 0; padding: 20px;\">&nbsp;</div>\r\n</div>\r\n</td>\r\n<td style=\"font-family: \'Helvetica Neue\',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0;\" valign=\"top\">&nbsp;</td>\r\n</tr>\r\n</tbody>\r\n</table>', 'email_verification', '2023-03-29 09:00:00', '2023-03-29 09:00:00', NULL);
 

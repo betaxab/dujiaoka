@@ -14,6 +14,13 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
+    // 返利跟随系统
+    const COMMISSION_TYPE_SYSTEM = 0;
+    // 首次返利
+    const COMMISSION_TYPE_ONETIME = 1;
+    // 循环返利
+    const COMMISSION_TYPE_CYCLE = 2;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -53,5 +60,20 @@ class User extends Authenticatable
     public function invite_user()
     {
         return $this->belongsTo(self::class, 'invite_user_id', 'id');
+    }
+
+    /**
+     * 获取组件映射
+     *
+     * @return array
+     *
+     */
+    public static function getCommissionTypeMap()
+    {
+        return [
+            self::COMMISSION_TYPE_SYSTEM => admin_trans('user.options.commission_system'),
+            self::COMMISSION_TYPE_ONETIME => admin_trans('user.options.commission_onetime'),
+            self::COMMISSION_TYPE_CYCLE => admin_trans('user.options.commission_cycle'),
+        ];
     }
 }

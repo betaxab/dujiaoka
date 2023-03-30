@@ -7,6 +7,8 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
+use App\Models\User as UserModel;
+use App\Models\UserGroup as UserGroupModel;
 
 class UserController extends AdminController
 {
@@ -30,6 +32,7 @@ class UserController extends AdminController
                 $filter->equal('id');
                 $filter->equal('email');
                 $filter->equal('invite_user_id');
+                $filter->equal('group_id')->select(UserGroupModel::query()->pluck('name', 'id'));
                 $filter->like('remarks');
             });
         });
@@ -47,13 +50,18 @@ class UserController extends AdminController
         return Show::make($id, new User(), function (Show $show) {
             $show->field('id');
             $show->field('email');
+            $show->field('invite_user_id');
+            $show->field('telegram_id');
             $show->field('password');
             $show->field('balance');
+            $show->field('discount');
+            $show->field('commission_type');
+            $show->field('commission_rate');
+            $show->field('status');
             $show->field('last_login_ip');
             $show->field('last_login_at');
-            $show->field('status');
-            $show->field('invite_user_id');
             $show->field('remarks');
+            $show->field('group_id');
             $show->field('created_at');
             $show->field('updated_at');
         });
@@ -76,10 +84,17 @@ class UserController extends AdminController
             });
             $form->text('password')->value('')->placeholder(admin_trans('user.fields.dont_change_pass_placeholder'));
             $form->decimal('balance')->required()->default(0);
+            $form->text('telegram_id');
+            $form->text('discount');
+            $form->select('commission_type')->options(UserModel::getCommissionTypeMap());
+            $form->text('commission_rate');
             $form->switch('status');
             $form->select('invite_user_id')->options(
                 \App\Models\User::query()->pluck('email', 'id')
             )->default(0);
+            $form->select('group_id')->options(
+                UserGroupModel::query()->pluck('name', 'id')
+            )->required();
             $form->textarea('remarks');
             $form->saving(function (Form $form) {
                 if ($form->isEditing() && $form->password) {

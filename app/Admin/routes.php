@@ -20,6 +20,7 @@ Route::group([
     $router->resource('pay', 'PayController');
     $router->resource('order', 'OrderController');
     $router->resource('user', 'UserController');
+    $router->resource('user-group', 'UserGroupController');
     $router->resource('invitecode', 'InviteCodeController');
     $router->resource('commission-log', 'CommissionLogController');
     $router->resource('withdraw', 'WithdrawController');
