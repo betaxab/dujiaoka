@@ -37,6 +37,12 @@ class DujiaoBoot
         // 语言检测
         $lang = dujiaoka_config_get('language', 'zh_CN');
         app()->setLocale($lang);
+
+        // Cloudflare 下 IP 还原
+        if (isset($_SERVER["HTTP_CF_CONNECTING_IP"])) {
+            $request->server->set('REMOTE_ADDR', $_SERVER["HTTP_CF_CONNECTING_IP"]);
+        }
+
         return $next($request);
     }
 }
